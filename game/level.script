@@ -1,4 +1,17 @@
 local BACKGROUND_COLOR = vmath.vector4(252/255, 223/255, 205/255, 255/255)
+local frames = 0
+
+function fixed_update(self, dt)
+	frames = frames + 1
+	if frames == 1 then
+		tilemap.set_tile("/level#level", "layer1", 17, 11, 37)
+	elseif frames == 90 then
+		tilemap.set_tile("/level#level", "layer1", 17, 11, 53)
+	elseif frames == 180 then
+		frames = 0
+	end
+	
+end
 
 function init(self)
 	msg.post("@render:", "clear_color", { color = BACKGROUND_COLOR })
